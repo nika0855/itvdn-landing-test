@@ -13,8 +13,8 @@ gulp.task('server', function() {
             port: 9000,
             baseDir: "build"
         },
-        browser: 'chrome',
-        notify: false
+        browser: 'chrome'
+        // notify: false
     
     });
     gulp.watch('build/**/*').on('change',browserSync.reload);
@@ -26,7 +26,7 @@ gulp.task('templates:compile', function buildHTML() {
     .pipe(pug({
       pretty: true
     }))
-    .pipe(gulp.dest('build'));
+    .pipe(gulp.dest('build'))
   });
 
 /*------------Styles compile----------*/
@@ -70,15 +70,15 @@ gulp.task('templates:compile', function buildHTML() {
   gulp.task('copy', gulp.parallel('copy:fonts', 'copy:images'));
 
   /*----------Watchers-------------*/
-  gulp.task('watch', function() {
-      gulp.watch('source/template/**/*.pug', gulp.series('templates:compile'));
-      gulp.watch('sourse/styles/**/*.scss', gulp.series('styles:compile'));
+gulp.task('watch', function() {
+  gulp.watch('source/template/**/*.pug', gulp.series('templates:compile'));
+  gulp.watch('sourse/styles/**/*.scss', gulp.series('styles:compile'));
   });
 
 
   gulp.task('default', gulp.series(
       'clean',
-      gulp.parallel('templates:compile','styles:compile', 'sprite', 'copy'),
-      gulp.parallel('watch', 'server')
+    gulp.parallel('templates:compile','styles:compile', 'sprite', 'copy'),
+    gulp.parallel('watch', 'server')
   )
   );

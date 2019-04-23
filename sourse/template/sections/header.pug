@@ -1,0 +1,19 @@
+header.header
+	.header__top
+		.container
+			.contacts
+				a.contact(href="tel:+2500009987")
+					i.fa.fa-mobile(aria-hidden="true")
+					span.contact__text 6337 3138
+
+				a.contact(href="mailto:info@business.co")
+					i.fa.fa-envelope.contact__icon.contact__icon--email(aria-hidden="true")
+					span.contact__text info@business.co		
+				a.facebook-icon(href="facebook.com") 
+	.container
+		.header__bottom
+			.logo: img.logo__picture(src="images/logo.png" alt="picture")
+			nav.nav
+			-var items = ['Home','About us', 'Our Approch', 'Our Work']
+				each item in items
+					a.nav__link(href="#")= item
